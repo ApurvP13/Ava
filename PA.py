@@ -18,7 +18,7 @@ class IntroPage(GridLayout):
 # adding the label
         self.add_widget(Label(text = "Welcome To AVA", font_name = "Times New Roman", font_size = "60", color = [241/255, 90/255, 34/255,1]))
 #adding the button
-        self.continue_butt = Button(text = "continue")
+        self.continue_butt = Button(text = "continue", background_normal="",background_color = [247/255,136/255,136/255, 1])
         self.add_widget(self.continue_butt)
 
 class PAApp(App):
