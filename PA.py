@@ -1,3 +1,4 @@
+
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -14,10 +15,10 @@ class IntroPage(GridLayout):
         super().__init__(**kwargs)
 
         self.rows = 2
-# adding the labels
-        self.add_widget(Label(text = "Welcome To AVA", font_name = "Georgia", font_size = "60", color = [225/255, 112/255, 85/255, 1.0]))
+# adding the label
+        self.add_widget(Label(text = "Welcome To AVA", font_name = "Georgia", font_size = "60", color = [241/255, 90/255, 34/255,1]))
 #adding the button
-        self.continue_butt = Button(text = "CONTINUE",size_hint =(.5, .25), background_normal="",background_color = [225/255, 112/255, 85/255, 1.0], font_name = "Georgiab", color = [255/255, 234/255, 167/255,1.0], font_size =40 )
+        self.continue_butt = Button(text = "continue", background_normal="",background_color = [247/255,136/255,136/255, 1])
         self.add_widget(self.continue_butt)
 
 class PAApp(App):
