@@ -54,6 +54,7 @@ class InputPage(GridLayout):
 		self.result_butt.bind(on_press = self.result_gen)
 		self.add_widget(self.result_butt)
 
+
 	def result_gen(self, instance):
 		in_text = self.input_text.text
 
