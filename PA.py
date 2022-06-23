@@ -1,4 +1,4 @@
-from turtle import width
+from turtle import back, width
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -22,7 +22,7 @@ class IntroPage(GridLayout):
 		self.rows = 3
 		self.padding=15
 
-		self.add_widget(Label(text = "Welcome To AVA", size_hint =(.5, .95), font_name = "Georgia", font_size = "70", color = [225/255, 112/255, 85/255, 1.0]))
+		self.add_widget(Label(text = "Welcome To ESHA", size_hint =(.5, .95), font_name = "Georgia", font_size = "70", color = [225/255, 112/255, 85/255, 1.0]))
 		self.add_widget(Label(text="Your personal assistant at your service.",size_hint =(.5, .35), font_name = "Georgia", font_size = "35", color = [225/255, 112/255, 85/255, 1.0] ))
 		self.continue_butt = Button(text = "CONTINUE",size_hint =(1, .30), background_normal="",background_color = [225/255, 112/255, 85/255, 1.0], font_name = "Georgia", color = [255/255, 234/255, 167/255,1.0], font_size =40 )
 		self.continue_butt.bind(on_press = self.nextPage)
@@ -38,14 +38,12 @@ class InputPage(GridLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
-		self.rows = 4
+		self.rows = 3
 		self.padding=15
 		self.spacing=10
 
 		self.add_widget(Label(text = "Type Your Input Here", font_name = "Georgia", font_size = "60", color = [225/255, 112/255, 85/255, 1.0]))
 
-		self.result_lbl = Label(text = "", font_name = "Georgia", font_size = "60", color = [61/255, 61/255, 61/255, 1.0])
-		self.add_widget(self.result_lbl)
 
 		self.input_text = TextInput(multiline = "false", font_size = 30, background_color = (232/255, 214/255, 203/255, 1), size_hint =(.5, .5), padding_x=[150,200], font_name = "Arial", foreground_color = [61/255, 61/255, 61/255, 1.0])
 		self.add_widget(self.input_text)
@@ -60,7 +58,7 @@ class InputPage(GridLayout):
 
 		if "how are you" in in_text:
 			print("Help Me!")
-			self.result_lbl.text = "Help Me!"
+			pa_app.page3.update_info("Help Me!")
 
 
 		else:
@@ -71,14 +69,36 @@ class InputPage(GridLayout):
 			try:
 				answer = next(result.results).text
 				print(answer)
-				self.result_lbl.text = answer
-				self.result_lbl.text_size = (self.result_lbl.width*0.9, None)
+				pa_app.page3.update_info(answer)
 			except:
 				print("not valid")
-				self.result_lbl.text = "NOT VALID!"
-				self.result_lbl.font_size=30
-				#self.result_lbl.text_size=(self.result_lbl.width*, self.result_lbl.height*0.9)
+				pa_app.page3.update_info("NOT VALID!")
+				
+		pa_app.screen_manager.current = "result"
 		
+
+class ResultPage(GridLayout):
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+
+		self.rows = 2
+
+		self.result_lbl = Label(text = "", font_name = "Georgia", font_size = "60", color = [61/255, 61/255, 61/255, 1.0])
+		self.result_lbl.bind(width=self.update_text_width)
+		self.add_widget(self.result_lbl)
+
+		self.back_butt = Button(text = "RESULT",size_hint =(.25, .25), background_normal="",background_color = [225/255, 112/255, 85/255, 1.0], font_name = "Georgia", color = [255/255, 234/255, 167/255,1.0], font_size =40 )
+		self.back_butt.bind(on_press = self.back_in)
+		self.add_widget(self.back_butt)
+
+	def update_info(self,text):
+		self.result_lbl.text = text
+
+	def update_text_width(self, *_):
+		self.result_lbl.text_size = (self.result_lbl.width*0.9,None)
+
+	def back_in(self, instance):
+		pa_app.screen_manager.current = "input"
 
 class PAApp(App):
 	def build(self):
@@ -92,6 +112,11 @@ class PAApp(App):
 		self.page2 = InputPage()
 		screen = Screen(name = "input")
 		screen.add_widget(self.page2)
+		self.screen_manager.add_widget(screen)
+
+		self.page3 = ResultPage()
+		screen  =Screen(name = "result")
+		screen.add_widget(self.page3)
 		self.screen_manager.add_widget(screen)
 
 		return self.screen_manager
