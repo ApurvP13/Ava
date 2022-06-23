@@ -44,7 +44,7 @@ class InputPage(GridLayout):
 
 		self.add_widget(Label(text = "Type Your Input Here", font_name = "Georgia", font_size = "60", color = [225/255, 112/255, 85/255, 1.0]))
 
-		self.result_lbl = Label(text = "", font_name = "Georgia", font_size = "60", color = [225/255, 112/255, 85/255, 1.0])
+		self.result_lbl = Label(text = "", font_name = "Georgia", font_size = "60", color = [61/255, 61/255, 61/255, 1.0])
 		self.add_widget(self.result_lbl)
 
 		self.input_text = TextInput(multiline = "false", font_size = 30, background_color = (232/255, 214/255, 203/255, 1), size_hint =(.5, .5), padding_x=[150,200], font_name = "Arial", foreground_color = [61/255, 61/255, 61/255, 1.0])
@@ -53,6 +53,7 @@ class InputPage(GridLayout):
 		self.result_butt = Button(text = "RESULT",size_hint =(.25, .25), background_normal="",background_color = [225/255, 112/255, 85/255, 1.0], font_name = "Georgia", color = [255/255, 234/255, 167/255,1.0], font_size =40 )
 		self.result_butt.bind(on_press = self.result_gen)
 		self.add_widget(self.result_butt)
+
 
 	def result_gen(self, instance):
 		in_text = self.input_text.text
@@ -75,6 +76,8 @@ class InputPage(GridLayout):
 			except:
 				print("not valid")
 				self.result_lbl.text = "NOT VALID!"
+				self.result_lbl.font_size=30
+				#self.result_lbl.text_size=(self.result_lbl.width*, self.result_lbl.height*0.9)
 		
 
 class PAApp(App):
