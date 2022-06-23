@@ -45,6 +45,20 @@ class InputPage(GridLayout):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class PAApp(App):
 	def build(self):
 		self.screen_manager = ScreenManager()
