@@ -43,7 +43,7 @@ class InputPage(GridLayout):
 
 		self.add_widget(Label(text = "Type Your Input Here", font_name = "Georgia", font_size = "60", color = [225/255, 112/255, 85/255, 1.0]))
 
-		self.add_widget(TextInput(multiline = "false", font_size = 30, background_color = (232/255, 214/255, 203/255, 1), size_hint =(.5, .5), padding_x=[150,200], font_name = "Arial", foreground_color = [61/255, 61/255, 61/255, 1.0]))
+		self.add_widget(TextInput(multiline = "false", font_size = 30, background_color = (232/255, 214/255, 203/255, 1), size_hint =(.5, .5), padding_x=[25,1], font_name = "Arial", foreground_color = [61/255, 61/255, 61/255, 1.0]))
 
 		self.result_butt = Button(text = "RESULT",size_hint =(.25, .25), background_normal="",background_color = [225/255, 112/255, 85/255, 1.0], font_name = "Georgia", color = [255/255, 234/255, 167/255,1.0], font_size =40 )
 		self.add_widget(self.result_butt)
