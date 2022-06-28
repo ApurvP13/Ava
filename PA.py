@@ -7,6 +7,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import wolframalpha as wolfaplha
+  
 
 
 
@@ -59,7 +60,7 @@ class InputPage(GridLayout):
 
 		if "are you" in in_text:
 			print("help me")
-			pa_app.page3.update_info(".... . .-.. .--. / -- .") #morse code for help me 
+			pa_app.page3.update_info("I am doing fine :D") #morse code for help me 
 
 
 		else:
