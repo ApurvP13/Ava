@@ -63,6 +63,9 @@ class InputPage(GridLayout):
 		if "are you" in in_text:
 			print("help me")
 			pa_app.page3.update_info("I am doing fine :D") #morse code for help me 
+			sound  = SoundLoader.load("help.wav")
+			sound.volume = 0.8
+			sound.play()
 
 
 		else:
