@@ -1,4 +1,3 @@
-from turtle import back, width
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -7,8 +6,8 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import wolframalpha as wolfaplha
-
-
+import wikipedia 
+from kivy.core.audio import SoundLoader
 
 
 from kivy.core.window import Window
@@ -59,7 +58,11 @@ class InputPage(GridLayout):
 
 		if "are you" in in_text:
 			print("help me")
-			pa_app.page3.update_info(".... . .-.. .--. / -- .") #morse code for help me 
+			pa_app.page3.update_info("I am doing fine :D") #morse code for help me 
+			sound = SoundLoader.load("help.wav")
+			sound.volume = 0.8
+			sound.play()
+
 
 
 		else:
@@ -72,8 +75,13 @@ class InputPage(GridLayout):
 				print(answer)
 				pa_app.page3.update_info(answer)
 			except:
-				print("not valid")
-				pa_app.page3.update_info("(invalid question/no data available)")
+				try:
+					result = wikipedia.summary(in_text, sentences=5)
+					pa_app.page3.update_info(result)
+				except:
+					result = "invalid question/no data available"
+					pa_app.page3.update_info(result)
+
 				
 		pa_app.screen_manager.current = "result"
 		
@@ -98,7 +106,7 @@ class ResultPage(GridLayout):
 		self.result_lbl.text = text
 
 	def update_text_width(self, *_):
-		self.result_lbl.font_size=20
+		self.result_lbl.text_size= (self.result_lbl.width*0.9, None)
 
 	def back_in(self, instance):
 		pa_app.screen_manager.current = "input"
