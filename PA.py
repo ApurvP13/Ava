@@ -75,6 +75,7 @@ class InputPage(GridLayout):
 				print(answer)
 				pa_app.page3.update_info(answer)
 			except:
+				#for using the wikipedia api
 				try:
 					result = wikipedia.summary(in_text, sentences=5)
 					pa_app.page3.update_info(result)
