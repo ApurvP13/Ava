@@ -8,6 +8,7 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import wolframalpha as wolfaplha
 import wikipedia 
+from kivy.core.audio import SoundLoader
   
 
 
