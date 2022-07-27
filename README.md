@@ -1,4 +1,5 @@
 # Ava - Affable Virtual Assistant
+A virtual assistant to answer your basic questions and solve math problems. Made by importing WolframeAlpha and Wikepedia API.
 
 ## Introductry Screen
 ![Screenshot 03-07-2022 13_55_52](https://user-images.githubusercontent.com/91132355/177032625-530b5e24-f7b7-453a-b3b1-13ff2eebb86c.png)
